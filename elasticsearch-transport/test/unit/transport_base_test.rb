@@ -229,10 +229,8 @@ class Elasticsearch::Transport::Transport::BaseTest < MiniTest::Unit::TestCase
             then.raises(Errno::ECONNREFUSED).
             then.returns(stub_everything :failures => 1)
 
-      assert_nothing_raised do
-        @transport.perform_request('GET', '/', &@block)
-        assert_equal 3, @transport.counter
-      end
+      @transport.perform_request('GET', '/', &@block)
+      assert_equal 3, @transport.counter
     end
 
     should "raise an error after max tries" do
@@ -346,9 +344,7 @@ class Elasticsearch::Transport::Transport::BaseTest < MiniTest::Unit::TestCase
     should "log error and continue when timing out while sniffing hosts" do
       @transport.sniffer.expects(:hosts).raises(Elasticsearch::Transport::Transport::SnifferTimeoutError)
       @transport.logger.expects(:error)
-      assert_nothing_raised do
-        @transport.reload_connections!
-      end
+      assert  @transport.reload_connections!
     end
   end
 

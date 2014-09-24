@@ -24,10 +24,8 @@ class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::Int
     end
 
     should "connect to the cluster" do
-      assert_nothing_raised do
         response = @client.perform_request 'GET', '_cluster/health'
         assert_equal 2, response.body['number_of_nodes']
-      end
     end
 
     should "handle paths and URL parameters" do
@@ -73,9 +71,7 @@ class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::Int
       end
 
       should "retry the request with next server" do
-        assert_nothing_raised do
           5.times { @client.perform_request 'GET', '_cluster/nodes/_local' }
-        end
       end
 
       should "raise exception when it cannot get any healthy server" do
@@ -84,10 +80,8 @@ class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::Int
                   logger: @logger,
                   retry_on_failure: 1
 
-        assert_nothing_raised do
-          # First hit is OK
-          @client.perform_request 'GET', '_cluster/nodes/_local'
-        end
+        # First hit is OK
+        @client.perform_request 'GET', '_cluster/nodes/_local'
 
         assert_raises Faraday::Error::ConnectionFailed do
           # Second hit fails
@@ -106,9 +100,7 @@ class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::Int
 
       should "reload the connections" do
         assert_equal 3, @client.transport.connections.size
-        assert_nothing_raised do
-          5.times { @client.perform_request 'GET', '_cluster/nodes/_local' }
-        end
+        5.times { @client.perform_request 'GET', '_cluster/nodes/_local' }
         assert_equal 2, @client.transport.connections.size
       end
     end

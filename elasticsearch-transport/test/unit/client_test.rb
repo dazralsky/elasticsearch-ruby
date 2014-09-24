@@ -13,9 +13,7 @@ class Elasticsearch::Transport::ClientTest < MiniTest::Unit::TestCase
     end
 
     should "be aliased as Elasticsearch::Client" do
-      assert_nothing_raised do
         assert_instance_of(Elasticsearch::Transport::Client, Elasticsearch::Client.new)
-      end
     end
 
     should "have default transport" do
