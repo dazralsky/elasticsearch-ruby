@@ -19,17 +19,6 @@ module Elasticsearch
           end
         end
 
-        should "have default document type" do
-          assert_nothing_raised do
-            subject.expects(:perform_request).with do |method, url, params, body|
-            assert_equal 'foo/document/_percolate', url
-            true
-          end.returns(FakeResponse.new)
-
-            subject.percolate :index => 'foo', :body => {}
-          end
-        end
-
         should "perform correct request" do
           subject.expects(:perform_request).with do |method, url, params, body|
             assert_equal 'GET', method

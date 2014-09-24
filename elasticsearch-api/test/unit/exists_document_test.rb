@@ -13,12 +13,6 @@ module Elasticsearch
           end
         end
 
-        should "NOT require the :type argument" do
-          assert_nothing_raised do
-            subject.exists :index => 'foo', :id => '1'
-          end
-        end
-
         should "require the :id argument" do
           assert_raises ArgumentError do
             subject.exists :index => 'foo', :type => 'bar'

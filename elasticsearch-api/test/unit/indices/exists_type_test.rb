@@ -38,13 +38,6 @@ module Elasticsearch
           assert_equal false, subject.indices.exists_type(:index => 'foo', :type => 'none')
         end
 
-        should "return false on 'not found' exceptions" do
-          subject.expects(:perform_request).raises(StandardError.new '404 NotFound')
-          assert_nothing_raised do
-            assert_equal false, subject.indices.exists_type(:index => 'foo', :type => 'none')
-          end
-        end
-
         should "re-raise generic exceptions" do
           subject.expects(:perform_request).raises(StandardError)
           assert_raises(StandardError) do

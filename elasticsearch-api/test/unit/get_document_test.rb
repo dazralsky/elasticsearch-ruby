@@ -13,12 +13,6 @@ module Elasticsearch
           end
         end
 
-        should "NOT require the :type argument" do
-          assert_nothing_raised do
-            subject.get :index => 'foo', :id => '1'
-          end
-        end
-
         should "require the :id argument" do
           assert_raises ArgumentError do
             subject.get :index => 'foo', :type => 'bar'
@@ -45,14 +39,6 @@ module Elasticsearch
           end.returns(FakeResponse.new)
 
           subject.get :index => 'foo', :type => 'bar', :id => '1', :routing => 'abc123'
-        end
-
-        should "catch a NotFound exception with the ignore parameter" do
-          subject.expects(:perform_request).raises(NotFound)
-
-          assert_nothing_raised do
-            subject.get :index => 'foo', :type => 'bar', :id => 'XXX', :ignore => 404
-          end
         end
 
       end
