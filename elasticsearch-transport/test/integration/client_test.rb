@@ -35,7 +35,7 @@ class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::Int
       response = @client.perform_request 'GET', 'myindex/mydoc/1?routing=XYZ'
       assert_equal true, response.body['exists']
       assert_equal 'bar', response.body['_source']['foo']
-      assert_raise Elasticsearch::Transport::Transport::Errors::NotFound do
+      assert_raises Elasticsearch::Transport::Transport::Errors::NotFound do
         response = @client.perform_request 'GET', 'myindex/mydoc/1?routing=ABC'
         assert_nil response.body['_source']
         assert_equal false, response.body['exists']
@@ -89,7 +89,7 @@ class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::Int
           @client.perform_request 'GET', '_cluster/nodes/_local'
         end
 
-        assert_raise Faraday::Error::ConnectionFailed do
+        assert_raises Faraday::Error::ConnectionFailed do
           # Second hit fails
           @client.perform_request 'GET', '_cluster/nodes/_local'
         end

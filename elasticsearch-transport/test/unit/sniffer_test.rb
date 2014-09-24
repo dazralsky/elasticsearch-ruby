@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Elasticsearch::Transport::Transport::SnifferTest < Test::Unit::TestCase
+class Elasticsearch::Transport::Transport::SnifferTest < MiniTest::Unit::TestCase
 
   class DummyTransport
     include Elasticsearch::Transport::Transport::Base
@@ -97,7 +97,7 @@ class Elasticsearch::Transport::Transport::SnifferTest < Test::Unit::TestCase
       @transport.expects(:perform_request).raises(Elasticsearch::Transport::Transport::SnifferTimeoutError)
 
       # TODO: Try to inject sleep into `perform_request` or make this test less ridiculous anyhow...
-      assert_raise Elasticsearch::Transport::Transport::SnifferTimeoutError do
+      assert_raises Elasticsearch::Transport::Transport::SnifferTimeoutError do
         @sniffer.hosts
       end
     end
@@ -137,7 +137,7 @@ class Elasticsearch::Transport::Transport::SnifferTest < Test::Unit::TestCase
 
       hosts = @sniffer.hosts
 
-      assert_not_equal       ['Node 1', 'Node 2', 'Node 3', 'Node 4', 'Node 5'], hosts.map { |h| h['name'] }
+      refute_equal       ['Node 1', 'Node 2', 'Node 3', 'Node 4', 'Node 5'], hosts.map { |h| h['name'] }
       assert_same_elements ['Node 1', 'Node 2', 'Node 3', 'Node 4', 'Node 5'], hosts.map { |h| h['name'] }
     end
 

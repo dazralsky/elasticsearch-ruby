@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Elasticsearch::Transport::Transport::Connections::CollectionTest < Test::Unit::TestCase
+class Elasticsearch::Transport::Transport::Connections::CollectionTest < MiniTest::Unit::TestCase
   include Elasticsearch::Transport::Transport::Connections
 
   context "Connection collection" do
@@ -10,7 +10,7 @@ class Elasticsearch::Transport::Transport::Connections::CollectionTest < Test::U
     end
 
     should "have default selector class" do
-      assert_not_nil Collection.new.selector
+      refute_nil Collection.new.selector
     end
 
     should "initialize a custom selector class" do
@@ -67,7 +67,7 @@ class Elasticsearch::Transport::Transport::Connections::CollectionTest < Test::U
         @collection = Collection.new :connections => [ c1, c2 ]
 
         assert_equal 0, @collection.size
-        assert_not_nil @collection.get_connection
+        refute_nil @collection.get_connection
         assert_equal 1, @collection.size
         assert_equal c2, @collection.first
       end

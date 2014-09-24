@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
+class Elasticsearch::Transport::Transport::BaseTest < MiniTest::Unit::TestCase
 
   class EmptyTransport
     include Elasticsearch::Transport::Transport::Base
@@ -25,7 +25,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
 
   context "Transport::Base" do
     should "raise exception when it doesn't implement __build_connections" do
-      assert_raise NoMethodError do
+      assert_raises NoMethodError do
         EmptyTransport.new.__build_connections
       end
     end
@@ -67,7 +67,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
     end
 
     should "get a connection" do
-      assert_not_nil @transport.get_connection
+      refute_nil @transport.get_connection
     end
 
     should "increment the counter" do
@@ -89,7 +89,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
     end
 
     should "raise an error when no block is passed" do
-      assert_raise NoMethodError do
+      assert_raises NoMethodError do
         @transport.peform_request 'GET', '/'
       end
     end
@@ -101,7 +101,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
 
     should "raise an error when no connection is available" do
       @transport.expects(:get_connection).returns(nil)
-      assert_raise Elasticsearch::Transport::Transport::Error do
+      assert_raises Elasticsearch::Transport::Transport::Error do
         @transport.perform_request 'GET', '/' do; Elasticsearch::Transport::Transport::Response.new 200, 'OK'; end
       end
     end
@@ -155,7 +155,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
 
     should "raise an error for HTTP status 404" do
       @transport.expects(:get_connection).returns(stub_everything :failures => 1)
-      assert_raise Elasticsearch::Transport::Transport::Errors::NotFound do
+      assert_raises Elasticsearch::Transport::Transport::Errors::NotFound do
         @transport.perform_request 'GET', '/' do
           Elasticsearch::Transport::Transport::Response.new 404, 'NOT FOUND'
         end
@@ -164,7 +164,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
 
     should "raise an error on server failure" do
       @transport.expects(:get_connection).returns(stub_everything :failures => 1)
-      assert_raise Elasticsearch::Transport::Transport::Errors::InternalServerError do
+      assert_raises Elasticsearch::Transport::Transport::Errors::InternalServerError do
         @transport.perform_request 'GET', '/' do
           Elasticsearch::Transport::Transport::Response.new 500, 'ERROR'
         end
@@ -177,7 +177,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
       # `block.expects(:call).raises(::Errno::ECONNREFUSED)` fails on Ruby 1.8
       block = lambda { |a, b| raise ::Errno::ECONNREFUSED }
 
-      assert_raise ::Errno::ECONNREFUSED do
+      assert_raises ::Errno::ECONNREFUSED do
         @transport.perform_request 'GET', '/', &block
       end
     end
@@ -190,7 +190,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
 
       c.expects(:dead!)
 
-      assert_raise( ::Errno::ECONNREFUSED ) { @transport.perform_request 'GET', '/', &block }
+      assert_raises( ::Errno::ECONNREFUSED ) { @transport.perform_request 'GET', '/', &block }
     end
   end
 
@@ -242,7 +242,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
             then.raises(Errno::ECONNREFUSED).
             then.raises(Errno::ECONNREFUSED)
 
-      assert_raise Errno::ECONNREFUSED do
+      assert_raises Errno::ECONNREFUSED do
         @transport.perform_request('GET', '/', &@block)
       end
     end
@@ -277,7 +277,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
 
       @transport.logger.expects(:fatal)
 
-      assert_raise Elasticsearch::Transport::Transport::Errors::InternalServerError do
+      assert_raises Elasticsearch::Transport::Transport::Errors::InternalServerError do
         @transport.perform_request('POST', '_search', &@block)
       end
     end unless RUBY_1_8
@@ -288,7 +288,7 @@ class Elasticsearch::Transport::Transport::BaseTest < Test::Unit::TestCase
 
       @transport.logger.expects(:fatal)
 
-      assert_raise(Exception) { @transport.perform_request('POST', '_search', &@block) }
+      assert_raises(Exception) { @transport.perform_request('POST', '_search', &@block) }
     end unless RUBY_1_8
   end
 

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Elasticsearch::Transport::ClientProfilingTest < Elasticsearch::Test::ProfilingTest
+class Elasticsearch::Transport::ClientProfilingTest < ElasticsearchMiniTest::ProfilingTest
   startup do
     Elasticsearch::TestCluster.start if ENV['SERVER'] and not Elasticsearch::TestCluster.running?
   end

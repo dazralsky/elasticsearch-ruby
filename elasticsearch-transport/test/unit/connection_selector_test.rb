@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Elasticsearch::Transport::Transport::Connections::SelectorTest < Test::Unit::TestCase
+class Elasticsearch::Transport::Transport::Connections::SelectorTest < MiniTest::Unit::TestCase
   include Elasticsearch::Transport::Transport::Connections::Selector
 
   class DummyStrategySelector
@@ -24,7 +24,7 @@ class Elasticsearch::Transport::Transport::Connections::SelectorTest < Test::Uni
     end
 
     should "have the abstract select method" do
-      assert_raise(NoMethodError) { DummyStrategySelector.new.select }
+      assert_raises(NoMethodError) { DummyStrategySelector.new.select }
     end
 
     context "in random strategy" do
@@ -33,7 +33,7 @@ class Elasticsearch::Transport::Transport::Connections::SelectorTest < Test::Uni
       end
 
       should "pick a connection" do
-        assert_not_nil @selector.select
+        refute_nil @selector.select
       end
     end
 

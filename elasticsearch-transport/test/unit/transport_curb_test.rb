@@ -2,7 +2,7 @@ require 'test_helper'
 require 'elasticsearch/transport/transport/http/curb'
 require 'curb'
 
-class Elasticsearch::Transport::Transport::HTTP::FaradayTest < Test::Unit::TestCase
+class Elasticsearch::Transport::Transport::HTTP::FaradayTest < MiniTest::Unit::TestCase
   include Elasticsearch::Transport::Transport::HTTP
 
   context "Curb transport" do
@@ -43,7 +43,7 @@ class Elasticsearch::Transport::Transport::HTTP::FaradayTest < Test::Unit::TestC
 
       %w| HEAD GET PUT POST DELETE |.each { |method| @transport.perform_request method, '/' }
 
-      assert_raise(ArgumentError) { @transport.perform_request 'FOOBAR', '/' }
+      assert_raises(ArgumentError) { @transport.perform_request 'FOOBAR', '/' }
     end
 
     should "allow to set options for Curb" do

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Elasticsearch::Transport::Transport::HTTP::FaradayTest < Test::Unit::TestCase
+class Elasticsearch::Transport::Transport::HTTP::FaradayTest < MiniTest::Unit::TestCase
   include Elasticsearch::Transport::Transport::HTTP
 
   context "Faraday transport" do

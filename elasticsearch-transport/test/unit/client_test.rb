@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Elasticsearch::Transport::ClientTest < Test::Unit::TestCase
+class Elasticsearch::Transport::ClientTest < MiniTest::Unit::TestCase
 
   class DummyTransport
     def initialize(*); end
@@ -93,14 +93,14 @@ class Elasticsearch::Transport::ClientTest < Test::Unit::TestCase
       end
 
       should "raise error for incompatible argument" do
-        assert_raise ArgumentError do
+        assert_raises ArgumentError do
           @client.__extract_hosts 123
         end
       end
 
       should "randomize hosts" do
         hosts = [ {:host => 'host1'}, {:host => 'host2'}, {:host => 'host3'}, {:host => 'host4'}, {:host => 'host5'}]
-        assert_not_equal     hosts, @client.__extract_hosts(hosts, :randomize_hosts => true)
+        refute_equal     hosts, @client.__extract_hosts(hosts, :randomize_hosts => true)
         assert_same_elements hosts, @client.__extract_hosts(hosts, :randomize_hosts => true)
       end
     end
