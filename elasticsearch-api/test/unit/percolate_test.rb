@@ -2,19 +2,19 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class PercolateTest < ::Test::Unit::TestCase
+    class PercolateTest < MiniTest::Unit::TestCase
 
       context "Percolate" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.percolate :type => 'bar', :body => {}
           end
         end
 
         should "require the :body argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.percolate :index => 'bar'
           end
         end

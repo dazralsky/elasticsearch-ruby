@@ -2,19 +2,19 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesPutAliasTest < ::Test::Unit::TestCase
+    class IndicesPutAliasTest < MiniTest::Unit::TestCase
 
       context "Indices: Put alias" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.put_alias :name => 'bar'
           end
         end
 
         should "require the :name argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.put_alias :index => 'foo'
           end
         end

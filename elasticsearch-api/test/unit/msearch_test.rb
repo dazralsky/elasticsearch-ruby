@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class MsearchTest < ::Test::Unit::TestCase
+    class MsearchTest < MiniTest::Unit::TestCase
 
       context "Msearch" do
         subject { FakeClient.new }
 
         should "require the :body argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.msearch
           end
         end

@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class ExistsTest < ::Test::Unit::TestCase
+    class ExistsTest < MiniTest::Unit::TestCase
 
       context "Exists document" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.exists :type => 'bar', :id => '1'
           end
         end
@@ -20,7 +20,7 @@ module Elasticsearch
         end
 
         should "require the :id argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.exists :index => 'foo', :type => 'bar'
           end
         end
@@ -64,7 +64,7 @@ module Elasticsearch
 
         should "re-raise generic exceptions" do
           subject.expects(:perform_request).raises(StandardError)
-          assert_raise(StandardError) do
+          assert_raises(StandardError) do
             assert_equal false, subject.exists(:index => 'foo', :type => 'bar', :id => '1')
           end
         end

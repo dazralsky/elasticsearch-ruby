@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesExistsTypeTest < ::Test::Unit::TestCase
+    class IndicesExistsTypeTest < MiniTest::Unit::TestCase
 
       context "Indices: Exists type" do
         subject { FakeClient.new }
@@ -47,7 +47,7 @@ module Elasticsearch
 
         should "re-raise generic exceptions" do
           subject.expects(:perform_request).raises(StandardError)
-          assert_raise(StandardError) do
+          assert_raises(StandardError) do
             assert_equal false, subject.indices.exists_type(:index => 'foo', :type => 'none')
           end
         end

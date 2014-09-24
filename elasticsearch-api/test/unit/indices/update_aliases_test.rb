@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesPutAliasesTest < ::Test::Unit::TestCase
+    class IndicesPutAliasesTest < MiniTest::Unit::TestCase
 
       context "Indices: Update aliases" do
         subject { FakeClient.new }
 
         should "require the :body argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.update_aliases
           end
         end

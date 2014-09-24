@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesPutSettingsTest < ::Test::Unit::TestCase
+    class IndicesPutSettingsTest < MiniTest::Unit::TestCase
 
       context "Indices: Put settings" do
         subject { FakeClient.new }
 
         should "require the :body argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.put_settings
           end
         end

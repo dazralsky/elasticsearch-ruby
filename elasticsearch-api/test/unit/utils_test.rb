@@ -4,7 +4,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class UtilsTest < ::Test::Unit::TestCase
+    class UtilsTest < MiniTest::Unit::TestCase
       include Elasticsearch::API::Utils
 
       context "Utils" do

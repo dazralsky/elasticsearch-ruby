@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesGetWarmerTest < ::Test::Unit::TestCase
+    class IndicesGetWarmerTest < MiniTest::Unit::TestCase
 
       context "Indices: Get warmer" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.get_warmer :name => 'foo'
           end
         end

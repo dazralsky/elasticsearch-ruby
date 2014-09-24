@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesExistsAliasTest < ::Test::Unit::TestCase
+    class IndicesExistsAliasTest < MiniTest::Unit::TestCase
 
       context "Indices: Exists alias" do
         subject { FakeClient.new }
 
         should "require the :name argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.delete_mapping
           end
         end
@@ -53,7 +53,7 @@ module Elasticsearch
 
         should "re-raise generic exceptions" do
           subject.expects(:perform_request).raises(StandardError)
-          assert_raise(StandardError) do
+          assert_raises(StandardError) do
             assert_equal false, subject.indices.exists_alias(:name => 'none')
           end
         end

@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesCloseTest < ::Test::Unit::TestCase
+    class IndicesCloseTest < MiniTest::Unit::TestCase
 
       context "Indices: Close" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.close
           end
         end

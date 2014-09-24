@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class BulkTest < ::Test::Unit::TestCase
+    class BulkTest < MiniTest::Unit::TestCase
 
       context "Bulk" do
         subject { FakeClient.new }

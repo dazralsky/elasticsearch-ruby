@@ -2,19 +2,19 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndexDocumentTest < ::Test::Unit::TestCase
+    class IndexDocumentTest < MiniTest::Unit::TestCase
 
       context "Indexing a document" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.index :type => 'foo'
           end
         end
 
         should "require the :type argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.index :index => 'foo'
           end
         end

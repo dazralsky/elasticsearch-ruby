@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesDeleteWarmerTest < ::Test::Unit::TestCase
+    class IndicesDeleteWarmerTest < MiniTest::Unit::TestCase
 
       context "Indices: Delete warmer" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.delete_warmer
           end
         end

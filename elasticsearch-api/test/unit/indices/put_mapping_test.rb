@@ -2,19 +2,19 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesPutMappingTest < ::Test::Unit::TestCase
+    class IndicesPutMappingTest < MiniTest::Unit::TestCase
 
       context "Indices: Put mapping" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.put_mapping :type => 'bar'
           end
         end
 
         should "require the :type argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.put_mapping :index => 'foo'
           end
         end

@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class DeleteByQueryTest < ::Test::Unit::TestCase
+    class DeleteByQueryTest < MiniTest::Unit::TestCase
 
       context "Delete by query" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.delete_by_query :body => {}
           end
         end

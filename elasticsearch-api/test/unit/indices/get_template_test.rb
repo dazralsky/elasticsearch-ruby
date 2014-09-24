@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesGetTemplateTest < ::Test::Unit::TestCase
+    class IndicesGetTemplateTest < MiniTest::Unit::TestCase
 
       context "Indices: Get template" do
         subject { FakeClient.new }
 
         should "require the :name argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.get_template
           end
         end

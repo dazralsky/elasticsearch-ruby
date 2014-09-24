@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class WrapperGemTest < ::Test::Unit::TestCase
+    class WrapperGemTest < MiniTest::Unit::TestCase
 
       context "Wrapper gem" do
 

@@ -4,7 +4,7 @@ require 'hashie'
 
 module Elasticsearch
   module Test
-    class HashieTest < ::Test::Unit::TestCase
+    class HashieTest < MiniTest::Unit::TestCase
 
       context "Hashie" do
         subject { FakeClient.new }

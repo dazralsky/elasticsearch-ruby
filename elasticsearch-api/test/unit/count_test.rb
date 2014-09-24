@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class CountTest < ::Test::Unit::TestCase
+    class CountTest < MiniTest::Unit::TestCase
 
       context "Count" do
         subject { FakeClient.new }

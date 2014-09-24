@@ -2,19 +2,19 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesDeleteAliasTest < ::Test::Unit::TestCase
+    class IndicesDeleteAliasTest < MiniTest::Unit::TestCase
 
       context "Indices: Delete alias" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.delete_alias :name => 'bar'
           end
         end
 
         should "require the :name argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.delete_alias :index => 'foo'
           end
         end

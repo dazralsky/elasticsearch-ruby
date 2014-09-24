@@ -2,13 +2,13 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesGetAliasTest < ::Test::Unit::TestCase
+    class IndicesGetAliasTest < MiniTest::Unit::TestCase
 
       context "Indices: Get alias" do
         subject { FakeClient.new }
 
         should "require the :name argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.indices.get_alias
           end
         end

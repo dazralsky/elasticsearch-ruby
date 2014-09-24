@@ -2,25 +2,25 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class DeleteTest < ::Test::Unit::TestCase
+    class DeleteTest < MiniTest::Unit::TestCase
 
       context "Delete document" do
         subject { FakeClient.new }
 
         should "require the :index argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.delete :type => 'bar', :id => '1'
           end
         end
 
         should "require the :type argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.delete :index => 'foo', :id => '1'
           end
         end
 
         should "require the :id argument" do
-          assert_raise ArgumentError do
+          assert_raises ArgumentError do
             subject.delete :index => 'foo', :type => 'bar'
           end
         end

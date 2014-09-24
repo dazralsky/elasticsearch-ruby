@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class ClusterPutSettingsTest < ::Test::Unit::TestCase
+    class ClusterPutSettingsTest < MiniTest::Unit::TestCase
 
       context "Cluster: Put settings" do
         subject { FakeClient.new }

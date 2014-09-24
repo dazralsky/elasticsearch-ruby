@@ -1,16 +1,10 @@
 RUBY_1_8 = defined?(RUBY_VERSION) && RUBY_VERSION < '1.9'
 
-if RUBY_1_8 and not ENV['BUNDLE_GEMFILE']
-  require 'rubygems'
-  gem 'test-unit'
-end
-
 require 'simplecov' and SimpleCov.start { add_filter "/test|test_/" } if ENV["COVERAGE"]
 
-require 'test/unit'
+require 'minitest/autorun'
 require 'shoulda-context'
 require 'mocha/setup'
-require 'turn' unless ENV["TM_FILEPATH"] || ENV["NOTURN"] || RUBY_1_8
 
 require 'require-prof' if ENV["REQUIRE_PROF"]
 require 'elasticsearch'
@@ -21,7 +15,7 @@ require '../elasticsearch-transport/test/test_extensions'
 
 module Elasticsearch
   module Test
-    class IntegrationTestCase < ::Test::Unit::TestCase
+    class IntegrationTestCase < MiniTest::Unit::TestCase
       extend IntegrationTestStartupShutdown
 
       shutdown { Elasticsearch::TestCluster.stop if ENV['SERVER'] && started? }
@@ -30,7 +24,7 @@ module Elasticsearch
   end
 
   module Test
-    class ProfilingTest < ::Test::Unit::TestCase
+    class ProfilingTest < MiniTest::Unit::TestCase
       extend IntegrationTestStartupShutdown
       extend ProfilingTestSupport
 

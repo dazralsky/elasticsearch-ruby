@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class PingTest < ::Test::Unit::TestCase
+    class PingTest < MiniTest::Unit::TestCase
 
       context "Indices: Exists" do
         subject { FakeClient.new }
@@ -36,7 +36,7 @@ module Elasticsearch
 
         should "re-raise generic exceptions" do
           subject.expects(:perform_request).raises(StandardError)
-          assert_raise(StandardError) do
+          assert_raises(StandardError) do
             assert_equal false, subject.ping
           end
         end
