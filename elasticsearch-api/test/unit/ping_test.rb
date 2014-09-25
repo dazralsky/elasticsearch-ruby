@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class PingTest < MiniTest::Unit::TestCase
+    class PingTest < Minitest::Test
 
       context "Indices: Exists" do
         subject { FakeClient.new }

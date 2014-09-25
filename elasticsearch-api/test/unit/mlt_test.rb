@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class MltTest < MiniTest::Unit::TestCase
+    class MltTest < Minitest::Test
 
       context "More Like This" do
         subject { FakeClient.new }

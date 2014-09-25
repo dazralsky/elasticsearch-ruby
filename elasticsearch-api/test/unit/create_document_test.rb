@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndexDocumentTest < MiniTest::Unit::TestCase
+    class IndexDocumentTest < Minitest::Test
 
       context "Creating a document with the #create method" do
         subject { FakeClient.new }

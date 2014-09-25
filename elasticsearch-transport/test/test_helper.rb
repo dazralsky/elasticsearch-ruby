@@ -24,7 +24,7 @@ RequireProf.print_timing_infos if ENV["REQUIRE_PROF"]
 
 module Elasticsearch
   module Test
-    class IntegrationTestCase < MiniTest::Unit::TestCase
+    class IntegrationTestCase < Minitest::Test
       extend IntegrationTestStartupShutdown
 
       shutdown { Elasticsearch::TestCluster.stop if ENV['SERVER'] && started? }
@@ -33,7 +33,7 @@ module Elasticsearch
   end
 
   module Test
-    class ProfilingTest < MiniTest::Unit::TestCase
+    class ProfilingTest < Minitest::Test
       extend IntegrationTestStartupShutdown
       extend ProfilingTestSupport
 

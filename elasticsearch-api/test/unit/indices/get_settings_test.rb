@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesGetSettingsTest < MiniTest::Unit::TestCase
+    class IndicesGetSettingsTest < Minitest::Test
 
       context "Indices: Get settings" do
         subject { FakeClient.new }

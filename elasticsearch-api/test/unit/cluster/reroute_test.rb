@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class ClusterRerouteTest < MiniTest::Unit::TestCase
+    class ClusterRerouteTest < Minitest::Test
 
       context "Cluster: Reroute" do
         subject { FakeClient.new }

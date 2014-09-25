@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesDeleteTemplateTest < MiniTest::Unit::TestCase
+    class IndicesDeleteTemplateTest < Minitest::Test
 
       context "Indices: Delete template" do
         subject { FakeClient.new }

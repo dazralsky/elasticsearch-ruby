@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Elasticsearch::Transport::Transport::Connections::SelectorTest < MiniTest::Unit::TestCase
+class Elasticsearch::Transport::Transport::Connections::SelectorTest < Minitest::Test
   include Elasticsearch::Transport::Transport::Connections::Selector
 
   class DummyStrategySelector

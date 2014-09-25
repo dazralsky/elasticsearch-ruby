@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesPutMappingTest < MiniTest::Unit::TestCase
+    class IndicesPutMappingTest < Minitest::Test
 
       context "Indices: Put mapping" do
         subject { FakeClient.new }

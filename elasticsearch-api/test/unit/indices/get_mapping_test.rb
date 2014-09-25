@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesGetMappingTest < MiniTest::Unit::TestCase
+    class IndicesGetMappingTest < Minitest::Test
 
       context "Indices: Get mapping" do
         subject { FakeClient.new }

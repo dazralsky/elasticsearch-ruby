@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class ClusterNodeStatsTest < MiniTest::Unit::TestCase
+    class ClusterNodeStatsTest < Minitest::Test
 
       context "Cluster: Node stats" do
         subject { FakeClient.new }

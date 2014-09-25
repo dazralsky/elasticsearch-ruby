@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class DeleteByQueryTest < MiniTest::Unit::TestCase
+    class DeleteByQueryTest < Minitest::Test
 
       context "Delete by query" do
         subject { FakeClient.new }

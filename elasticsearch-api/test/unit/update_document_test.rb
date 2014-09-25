@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class UpdateTest < MiniTest::Unit::TestCase
+    class UpdateTest < Minitest::Test
 
       context "Update document" do
         subject { FakeClient.new }

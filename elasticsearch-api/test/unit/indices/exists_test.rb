@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesExistsTest < MiniTest::Unit::TestCase
+    class IndicesExistsTest < Minitest::Test
 
       context "Indices: Exists" do
         subject { FakeClient.new }

@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class ClientTest < MiniTest::Unit::TestCase
+    class ClientTest < Minitest::Test
 
       context "API Client" do
 

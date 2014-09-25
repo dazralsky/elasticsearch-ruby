@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesRefreshTest < MiniTest::Unit::TestCase
+    class IndicesRefreshTest < Minitest::Test
 
       context "Indices: Refresh" do
         subject { FakeClient.new }
