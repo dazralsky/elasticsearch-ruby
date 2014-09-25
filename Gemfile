@@ -9,11 +9,10 @@ gem "pry"
 gem "ansi"
 gem "shoulda-context"
 gem "mocha"
-gem "turn"
 gem "yard"
-gem "ruby-prof"
 
-if defined?(RUBY_VERSION) && RUBY_VERSION > '1.9'
+platforms :ruby_19, :ruby_20, :ruby_21 do
+  gem "ruby-prof"
   gem "simplecov"
   gem "cane"
   gem "require-prof"
