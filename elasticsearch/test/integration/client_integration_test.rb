@@ -27,7 +27,6 @@ module Elasticsearch
         end
 
         should "perform the API methods" do
-          assert_nothing_raised do
             # Index a document
             #
             @client.index index: 'test-index', type: 'test-type', id: '1', body: { title: 'Test' }
@@ -46,7 +45,6 @@ module Elasticsearch
             # Delete the index
             #
             @client.indices.delete index: 'test-index'
-          end
         end
 
       end
