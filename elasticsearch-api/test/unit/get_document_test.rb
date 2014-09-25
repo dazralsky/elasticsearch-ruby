@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class GetTest < Minitest::Test
+    class GetTest < MiniTest::Spec
 
       context "Get document" do
         subject { FakeClient.new }

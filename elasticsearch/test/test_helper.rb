@@ -15,7 +15,7 @@ require '../elasticsearch-transport/test/test_extensions'
 
 module Elasticsearch
   module Test
-    class IntegrationTestCase < Minitest::Test
+    class IntegrationTestCase < MiniTest::Spec
       extend IntegrationTestStartupShutdown
 
       shutdown { Elasticsearch::TestCluster.stop if ENV['SERVER'] && started? }
@@ -24,7 +24,7 @@ module Elasticsearch
   end
 
   module Test
-    class ProfilingTest < Minitest::Test
+    class ProfilingTest < MiniTest::Spec
       extend IntegrationTestStartupShutdown
       extend ProfilingTestSupport
 

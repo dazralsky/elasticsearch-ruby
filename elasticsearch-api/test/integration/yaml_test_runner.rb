@@ -175,7 +175,7 @@ module Elasticsearch
       extend self
     end
 
-    class YamlTestCase < Minitest::Test; end
+    class YamlTestCase < MiniTest::Spec; end
   end
 end
 

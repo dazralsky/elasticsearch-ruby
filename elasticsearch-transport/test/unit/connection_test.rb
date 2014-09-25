@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Elasticsearch::Transport::Transport::Connections::ConnectionTest < Minitest::Test
+class Elasticsearch::Transport::Transport::Connections::ConnectionTest < MiniTest::Spec
   include Elasticsearch::Transport::Transport::Connections
 
   context "Connection" do

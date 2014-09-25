@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesSnapshotIndexTest < Minitest::Test
+    class IndicesSnapshotIndexTest < MiniTest::Spec
 
       context "Indices: Snapshot index" do
         subject { FakeClient.new }

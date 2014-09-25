@@ -6,7 +6,7 @@ require 'simplecov' and SimpleCov.start { add_filter "/test|test_/" } if ENV["CO
 
 # Register `at_exit` handler for integration tests shutdown.
 # MUST be called before requiring `test/unit`.
-at_exit { Elasticsearch::Test::IntegrationTestCase.__run_at_exit_hooks }
+
 
 require 'minitest/autorun'
 require 'shoulda-context'
@@ -24,7 +24,7 @@ RequireProf.print_timing_infos if ENV["REQUIRE_PROF"]
 
 module Elasticsearch
   module Test
-    class IntegrationTestCase < Minitest::Test
+    class IntegrationTestCase < MiniTest::Spec
       extend IntegrationTestStartupShutdown
 
       shutdown { Elasticsearch::TestCluster.stop if ENV['SERVER'] && started? }
@@ -33,7 +33,7 @@ module Elasticsearch
   end
 
   module Test
-    class ProfilingTest < Minitest::Test
+    class ProfilingTest < MiniTest::Spec
       extend IntegrationTestStartupShutdown
       extend ProfilingTestSupport
 
@@ -42,3 +42,5 @@ module Elasticsearch
     end
   end
 end
+
+at_exit { Elasticsearch::Test::IntegrationTestCase.__run_at_exit_hooks }

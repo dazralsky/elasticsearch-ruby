@@ -5,7 +5,7 @@ require 'jsonify'
 
 module Elasticsearch
   module Test
-    class JsonBuildersTest < Minitest::Test
+    class JsonBuildersTest < MiniTest::Spec
 
       context "JBuilder" do
         subject { FakeClient.new }

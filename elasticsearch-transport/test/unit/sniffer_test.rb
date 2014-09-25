@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Elasticsearch::Transport::Transport::SnifferTest < Minitest::Test
+class Elasticsearch::Transport::Transport::SnifferTest < MiniTest::Spec
 
   class DummyTransport
     include Elasticsearch::Transport::Transport::Base

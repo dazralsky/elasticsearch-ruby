@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class DeleteTest < Minitest::Test
+    class DeleteTest < MiniTest::Spec
 
       context "Delete document" do
         subject { FakeClient.new }

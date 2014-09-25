@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesOptimizeTest < Minitest::Test
+    class IndicesOptimizeTest < MiniTest::Spec
 
       context "Indices: Optimize" do
         subject { FakeClient.new }

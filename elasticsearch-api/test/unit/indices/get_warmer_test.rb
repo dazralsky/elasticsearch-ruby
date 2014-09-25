@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class IndicesGetWarmerTest < Minitest::Test
+    class IndicesGetWarmerTest < MiniTest::Spec
 
       context "Indices: Get warmer" do
         subject { FakeClient.new }

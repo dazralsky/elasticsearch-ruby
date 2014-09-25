@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Elasticsearch
   module Test
-    class ScrollTest < Minitest::Test
+    class ScrollTest < MiniTest::Spec
 
       context "Scroll" do
         subject { FakeClient.new }
